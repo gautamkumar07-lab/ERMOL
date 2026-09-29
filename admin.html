@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERMOL – Admin Dashboard</title>
+<link rel="stylesheet" href="/ERMOL/style.css">
+
+<link rel="icon" type="image/x-icon" href="/ERMOL/Screenshot 2026-09-29 184531.png">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="admin.html">🎓 <b>ERMOL</b><small>Admin Dashboard</small></a>
+  <div class="row"><a class="btn ghost" href="index.html">Home</a><button class="btn ghost" id="logout">Logout</button></div>
+</header>
+
+<main class="adm">
+  <div class="row" style="justify-content:space-between"><h2>Dashboard</h2><button class="btn" id="newQuiz">+ Create Quiz</button></div>
+  <div class="s4" id="stats"></div>
+
+  <h3 style="margin-bottom:10px">Your quizzes</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Title</th><th>Subject</th><th>Topic</th><th>Difficulty</th><th>Quiz Code</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody id="quizBody"></tbody>
+  </table></div>
+
+  <h3 style="margin-bottom:10px">Recent attempts</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Student</th><th>Quiz</th><th>Score</th><th>Percentage</th><th>Date</th></tr></thead>
+    <tbody id="attBody"></tbody>
+  </table></div>
+</main>
+
+<div class="modal" id="builder"><form class="mbox wide" id="quizForm">
+  <h3 id="bTitle">Create Quiz</h3>
+  <label for="fTitle">Quiz Title</label><input id="fTitle" required maxlength="120">
+  <div class="cols">
+    <div><label for="fSub">Subject</label><select id="fSub" required></select></div>
+    <div><label for="fTop">Topic</label><select id="fTop" required></select></div>
+    <div><label for="fDiff">Difficulty</label><select id="fDiff"><option>Easy</option><option selected>Medium</option><option>Hard</option></select></div>
+    <div><label for="fTime">Time (minutes)</label><input id="fTime" type="number" min="1" max="180" value="10" required></div>
+  </div>
+  <h3 style="margin-top:22px">Questions</h3>
+  <div id="qList"></div>
+  <p class="err" id="bErr"></p>
+  <div class="row" style="margin-top:14px">
+    <button type="button" class="btn ghost" id="addQ">+ Add Question</button>
+    <button class="btn" id="saveBtn">Save Quiz</button>
+    <button type="button" class="btn ghost" data-close>Cancel</button>
+  </div>
+</form></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

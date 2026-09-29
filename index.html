@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERMOL – Learn • Practice • Grow</title>
+<link rel="stylesheet" href="/ERMOL/style.css">
+<link rel="icon" type="image/x-icon" href="/ERMOL/Screenshot 2026-09-29 184531.png">
+</head>
+<body>
+<div id="site">
+<header class="nav">
+  <a class="logo" href="#home">🎓 <b>ERMOL</b><small>Learn • Practice • Grow</small></a>
+  <nav><a href="#home">Home</a><a href="#subjects">Subjects</a><a href="#how">How It Works</a><a href="#about">About</a></nav>
+  <div class="row"><button class="btn ghost" data-admin>Admin Login</button><a class="btn" href="#subjects">Get Started</a></div>
+</header>
+
+<main id="home">
+<section class="wrap hero">
+  <div>
+    <span class="badge">● Open to learning &amp; growth</span>
+    <h1>Take Your Skills<br>to the <span class="grad">Next Level</span></h1>
+    <p class="lead">Practice coding and web skills with subject-wise quizzes, topic selection, unique quiz codes and instant results.</p>
+    <div class="row"><a class="btn" href="#codeForm" id="joinBtn">▶ Join Quiz</a><button class="btn ghost" data-admin>◉ Admin Login</button></div>
+    <form class="codebox" id="codeForm" autocomplete="off">
+      <label for="codeIn">Enter Quiz Code</label>
+      <div class="row"><input id="codeIn" placeholder="ERMOL-7K29P" maxlength="11"><button class="btn">Continue</button></div>
+      <p class="err" id="codeErr"></p>
+    </form>
+  </div>
+  <div class="visual">
+    <span class="chip c1">Coding</span><span class="chip c2">React.js</span><span class="chip c3">C++ + Python</span><span class="chip c4">AI + Web</span>
+    <div class="glass"><img src="/ERMOL/Screenshot 2026-09-29 184531.png" alt="ERMOL profile illustration"><h3 class="grad">ERMOL</h3><p class="mut">Learn • Practice • Grow</p></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="subjects">
+  <div class="head"><small>OUR SUBJECTS</small><h2>Choose Your Subject &amp; Topic</h2><p class="mut">Select a subject first. Its matching topics appear automatically.</p></div>
+  <div class="grid2" id="subjectGrid"></div>
+  <div class="panel" id="practice">
+    <div class="cols">
+      <div><label for="subSel">Choose a Subject</label><select id="subSel"></select></div>
+      <div><label for="topSel">Choose a Topic</label><select id="topSel" disabled><option value="">-- Select Topic --</option></select></div>
+    </div>
+    <label>Difficulty</label>
+    <div class="pills">
+      <label><input type="radio" name="diff" value="Easy"><span>Easy</span></label>
+      <label><input type="radio" name="diff" value="Medium"><span>Medium</span></label>
+      <label><input type="radio" name="diff" value="Hard"><span>Hard</span></label>
+    </div>
+    <div style="margin-top:20px"><button class="btn hidden" id="startPractice">Start Practice →</button></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="how">
+  <div class="head"><small>HOW IT WORKS</small><h2>From code to result in four steps</h2></div>
+  <div class="steps">
+    <div class="step"><b class="grad">01</b><h3>Get Quiz Code</h3><p>Your teacher shares a code like ERMOL-7K29P.</p></div>
+    <div class="step"><b class="grad">02</b><h3>Join Quiz</h3><p>Enter the code and your name.</p></div>
+    <div class="step"><b class="grad">03</b><h3>Take Quiz</h3><p>Answer against the timer.</p></div>
+    <div class="step"><b class="grad">04</b><h3>See Result</h3><p>Get your score and percentage instantly.</p></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="about">
+  <div class="head"><small>ABOUT</small><h2>Built for focused practice</h2></div>
+  <div class="feats">
+    <div class="feat"><h3>Subject-wise practice</h3><p>Pick a subject, topic and difficulty and start straight away.</p></div>
+    <div class="feat"><h3>Shareable quiz codes</h3><p>Each published quiz gets a unique code that works on any device.</p></div>
+    <div class="feat"><h3>Instant results</h3><p>Timed quizzes with scores calculated the moment you submit.</p></div>
+  </div>
+</section>
+</main>
+<footer>© ERMOL • Learn • Practice • Grow</footer>
+</div>
+
+<div id="quizView" class="quiz hidden">
+  <div class="qhead"><div><h2 id="qSub"></h2><p class="mut" id="qMeta"></p></div><div class="timer" id="timer">00:00</div></div>
+  <p class="mut" id="qCount"></p>
+  <div class="bar"><i id="bar"></i></div>
+  <h3 id="qText" style="font-size:21px;margin-bottom:18px"></h3>
+  <div id="opts"></div>
+  <div class="nav2"><button class="btn ghost" id="prevBtn">← Previous</button><button class="btn" id="nextBtn">Next →</button></div>
+</div>
+
+<div id="resultView" class="result panel hidden">
+  <h2>Quiz Completed 🎉</h2>
+  <p class="mut" id="rName"></p>
+  <div class="score grad" id="rScore"></div>
+  <div class="stats" id="rStats"></div>
+  <button class="btn" onclick="location.reload()">Back to Home</button>
+</div>
+
+<div class="modal" id="nameModal"><form class="mbox" id="nameForm">
+  <h3 id="nmTitle"></h3><p class="mut" id="nmSub"></p>
+  <label for="nameIn">Enter Your Name</label><input id="nameIn" placeholder="Your name" maxlength="60" required>
+  <p class="err" id="nameErr"></p>
+  <div class="row" style="margin-top:14px"><button class="btn" id="nameGo">Start →</button><button type="button" class="btn ghost" data-close>Cancel</button></div>
+</form></div>
+
+<div class="modal" id="adminModal"><form class="mbox" id="loginForm">
+  <h3>Admin Login</h3><p class="mut">Sign in with your ERMOL admin account.</p>
+  <label for="aEmail">Admin Email</label><input id="aEmail" type="email" required autocomplete="username">
+  <label for="aPass">Password</label><input id="aPass" type="password" required autocomplete="current-password">
+  <p class="err" id="loginErr"></p>
+  <div class="row" style="margin-top:14px"><button class="btn">Login →</button><button type="button" class="btn ghost" data-close>Cancel</button></div>
+</form></div>
+ <nav>
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="/ERMOL/js/config.js"></script>
+<script src="/ERMOL/js/app.js"></script>
+</body>
+</html>
